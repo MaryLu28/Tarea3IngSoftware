@@ -17,3 +17,5 @@ class BilleteraElectronica(object):
         self.debitos = []
         self.balance = 0
         
+    def saldo (self):
+        return(self.balance)
