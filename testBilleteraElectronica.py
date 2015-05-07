@@ -62,6 +62,11 @@ class TestBilleteraElectronica(unittest.TestCase):
         SaldoAnterior = Billetera.saldo()
         Billetera.consumir(500, Fecha, "HOk234t1")
         self.assertEqual(Billetera.saldo(), SaldoAnterior - 500, "Saldo Incorrecto")
+        
+    # Caso nombres y apellidos en castellano
+    
+    def TestNamesInCatilian(self):
+        BilleteraElectronica("fj459gjd", "áéíóúä'ëïöüñ", "ÁÉÍÓÚÄ-ËÏÖÜÑ", 12345678, 123456)
            
     ###########################################################################
     #               Casos Fronteras, Esquinas y Malicia                       #
