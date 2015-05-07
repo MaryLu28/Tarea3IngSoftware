@@ -4,6 +4,8 @@ Created on 4/5/2015
 @author: Daniela Ortiz (10-10517)
          Maria Lourdes Garcia (10-10264)
 '''
+# -*- coding: utf-8 -*-
+
 import unittest
 from BilleteraElectronica import *
 import datetime
@@ -66,7 +68,13 @@ class TestBilleteraElectronica(unittest.TestCase):
     # Caso nombres y apellidos en castellano
     
     def TestNamesInCatilian(self):
-        BilleteraElectronica("fj459gjd", "√°√©√≠√≥√∫√§'√´√Ø√∂√º√±", "√Å√â√ç√ì√ö√Ñ-√ã√è√ñ√ú√ë", 12345678, 123456)
+        BilleteraElectronica("fj459gjd", "·ÈÌÛ‰'ÎÔˆ¸Ò", "¡…Õ”⁄ƒ-Àœ÷‹—", 12345678, 123456)
+    
+    # Caso para verificar que se calcula el saldo correctamente
+    
+    def TestSaldoCorrect(self):
+        Billetera = BilleteraElectronica("24Saa90j" , "Luis", "Garcia", 8226134, 663312)
+        self.assertEqual(Billetera.saldo(), 0)
            
     ###########################################################################
     #               Casos Fronteras, Esquinas y Malicia                       #
