@@ -52,6 +52,16 @@ class TestBilleteraElectronica(unittest.TestCase):
         Fecha = datetime (2009, 8, 30, 3, 25)
         Billetera.recargar(5000, Fecha, "HOk234t1")
         self.assertEqual(Billetera.saldo(), 5000, "Saldo Incorrecto")
+    
+    # Caso para verificar que el consumo se haga efectivamente
+        
+    def TestConsumirCorrect(self):
+        Billetera = BilleteraElectronica("24Saa90j" , "Luis", "Garcia", 8226134, 663312)
+        Fecha = datetime (2009, 8, 30, 3, 25)
+        Billetera.recargar(5000, Fecha, "HOk234t1")
+        SaldoAnterior = Billetera.saldo()
+        Billetera.consumir(500, Fecha, "HOk234t1")
+        self.assertEqual(Billetera.saldo(), SaldoAnterior - 500, "Saldo Incorrecto")
            
     ###########################################################################
     #               Casos Fronteras, Esquinas y Malicia                       #
