@@ -9,13 +9,18 @@ from BilleteraElectronica import *
 import datetime
 
 class TestBilleteraElectronica(unittest.TestCase):
+
+    ###########################################################################
+    #                               Casos TDD                                 #
+    ###########################################################################
     
     # Caso para verificar que existe la clase Billetera Electronica
     
     def TestBilleteraElectronicaExist(self):
         BilleteraElectronica()
     
-    # Caso para verificar que existe el constructor de la clase Billetera Electronica
+    # Caso para verificar que existe el constructor de la clase Billetera 
+    # Electronica
         
     def TestConstructBEExist(self):
         BilleteraElectronica("AfJ556tY", "Nelson", "Gonzalez", 19994187, 123456)
@@ -39,6 +44,18 @@ class TestBilleteraElectronica(unittest.TestCase):
         Billetera = BilleteraElectronica("24Saa90j" , "Luis", "Garcia", 8226134, 663312)
         Fecha = datetime (2009, 8, 30, 3, 25)
         Billetera.consumir(5000, Fecha, "HOk234t1")
+        
+    # Caso para verificar que la recarga se haga efectivamente 
+       
+    def TestRecargaCorrect(self):
+        Billetera = BilleteraElectronica("24Saa90j" , "Luis", "Garcia", 8226134, 663312)
+        Fecha = datetime (2009, 8, 30, 3, 25)
+        Billetera.recargar(5000, Fecha, "HOk234t1")
+        self.assertEqual(Billetera.saldo(), 5000, "Saldo Incorrecto")
+           
+    ###########################################################################
+    #               Casos Fronteras, Esquinas y Malicia                       #
+    ###########################################################################
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
